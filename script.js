@@ -165,7 +165,6 @@ function createBookInfo(element) {
     let price = element.price;
     let text = "QUESTO LIBRO È BELLO! COMPRALO SUBITO!"
 
-    let cardTitleBig = document.createElement('h1');
     let cardTitle = document.createElement('h2');
     let cardImg = document.createElement('img');
     let cardText = document.createElement('h5');
@@ -175,7 +174,6 @@ function createBookInfo(element) {
     let divtext = document.createElement('div');
     let divContainer = document.createElement('div');
 
-    cardTitleBig.innerText = title;
     cardTitle.innerText = title;
     cardImg.src = img;
     cardText.innerText = text;
@@ -185,11 +183,11 @@ function createBookInfo(element) {
     cardImg.style.maxHeight = "500px"
     divtext.classList.add('text-light', 'mx-3');
     divImgText.classList.add('d-flex', );
-    cardTitleBig.classList.add('text-light', 'text-center', 'mb-5', 'mt-4');
     cardText.classList.add('my-5');
+    divContainer.classList.add('my-5');
 
     divtext.append(cardTitle, cardText, cardCategory, cardPrice);
     divImgText.append(cardImg, divtext);
-    divContainer.append(cardTitleBig, divImgText);
+    divContainer.append(divImgText);
     container.append(divContainer);
 }

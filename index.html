@@ -9,12 +9,9 @@
   <body class="bg-dark">
     <!-- Navbar -->
     <nav class="navbar bg-body-dark">
-        <div class="container-fluid">
+        <div class="container-fluid d-flex">
           <a class="navbar-brand">Navbar</a>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" id="search-book" type="search" placeholder="Search a book" aria-label="Search" onkeyup="research()">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <input class=" rounded-pill text-center px-3 py-2 mx-5" id="search-book" type="search" placeholder="Search a book" onkeyup="research()">
         </div>
       </nav>
       <!-- content -->
@@ -26,7 +23,7 @@
             </div>
             <!-- cart -->
             <div class="col-2 bg-light d-flex flex-column align-items-center" id="cart">
-              <button id="empty-cart" >Svuota il carrello</button>
+              <button id="empty-cart">Svuota il carrello</button>
             </div>
         </div>
       </div>
