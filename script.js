@@ -180,11 +180,14 @@ function createBookInfo(element) {
     cardCategory.innerText = category;
     cardPrice.innerText = "€" + price;
 
-    cardImg.style.maxHeight = "500px"
+    cardImg.classList.add('m-3');
+    cardImg.style.maxHeight = "500px";
     divtext.classList.add('text-light', 'mx-3');
-    divImgText.classList.add('d-flex', );
+    divImgText.classList.add('d-flex', 'border', 'border-light', 'rounded');
+    divImgText.style.maxWidth = "1000px"
     cardText.classList.add('my-5');
     divContainer.classList.add('my-5');
+    container.classList.add('d-flex', 'justify-content-center')
 
     divtext.append(cardTitle, cardText, cardCategory, cardPrice);
     divImgText.append(cardImg, divtext);
