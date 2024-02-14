@@ -1,23 +1,26 @@
 fetch("https://striveschool-api.herokuapp.com/books")
 .then((res) => res.json())
-.then((json) => books(json))
+.then((json) => createTemplate(json))
 .catch((err) => console.log("Error detected: ", err) );
 
 let container = document.getElementById('bookContainer');
 let cart = document.getElementById("cart");
-// console.log(cart)
+let searchInput = document.getElementById('search-book');
+let activeResult;
+// console.log(searchInput)
 
-function books (result) {
-    result.forEach(element => {
+function createTemplate (books, savedResult = true) {
+    if (savedResult) {
+        activeResult = books;
+    }
+    books.forEach((element) => {
+        createCard(element);
+    })
+}
+
+function createCard (element) {
         // ciclati tutti gli elementi per le card
         const {title, img, price, category, asin} = element;
-        // let title = element.title;
-        // let img = element.img;
-        // let price = element.price;
-        // let category = element.category;
-        // let asin = element.asin;
-        // console.log(asin)
-        // creo la card
         let card = document.createElement('div');
         card.classList.add('card', 'col-lg-3', 'col-md-4', 'col-12', 'px-0');
         card.style.backgroundColor = "#444242"
@@ -53,17 +56,19 @@ function books (result) {
         // creazione effettiva della card
         card.append(cardImg, cardBody, footerCard);
         // aggiungo la card al DOM
-        container.append(card);
+        container.appendChild(card);
         // console.log(buttonCart)
 
 
         buttonCart.addEventListener('click', ()=>{
             cart.append(cartElement(element));
+            card.classList.add('border', 'border-danger')
         })
-    });
+    
     
 }
 
+// funzione per creare le card del carrello
 function cartElement(element) {
     let title = element.title;
     let img = element.img;
@@ -107,3 +112,16 @@ function cartElement(element) {
     return card;
 }
 
+// funzione per la ricerca
+function research () {
+    if (activeResult) {
+        container.innerHTML = "";
+        let liveSearch = searchInput.value;
+        let filteredResult = activeResult.filter((books) => {
+            return books.title.toLowerCase().includes(liveSearch.toLowerCase());
+        })
+        // console.log(filteredResult)
+
+        createTemplate(filteredResult, false)
+    }
+}
